@@ -27,9 +27,10 @@ nav{
 .nav-links{
 	width: 115px;
 }
-a{
+.nav a{
 	text-decoration: none;
 	color: white;
+	cursor: pointer;
 }
 .nav li{
 	margin-right: 30px;
@@ -86,7 +87,7 @@ header{
 	font-size: 20px;
 }
 
-.login-sign-form{
+.login-register-form{
 	background-color: white;
 	margin: 0 auto;
 	max-width: 320px;
@@ -102,18 +103,18 @@ header{
 	border: 1px solid black;
 }
 
-.login-sign-form > h3 {
+.login-register-form > h3 {
 	text-align: center;
 	margin-bottom: 13px;
 }
 
-.login-sign-form > label{
+.login-register-form > label{
 	display: block;
 	line-height: 15px;
 	padding: 15px 0 15px;
 }
 
-.login-sign-form > button{
+.login-register-form > button{
 	margin-top: 12px;
 	padding: 10px 40px 10px;
 	font-size: 15px;
@@ -133,8 +134,10 @@ header{
 	font-size: 30px;
 }
 .recipe-info{
+	display: none;
 	padding: 10px;
 	margin-bottom: 10px;
+	overflow: hidden;
 }
 .recipe-info ul{
 	margin: 8px 0 8px;
@@ -152,6 +155,7 @@ header{
 	cursor: pointer;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 
 
 /*----------------------------------------------*/
