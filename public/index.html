@@ -3,28 +3,27 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="main.css">
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script type="text/javascript" src="client.js"></script>
 </head>
 <body>
+	<nav role="navigation">
+		<ul class="nav flex-row">
+			<li>MyRecipes</li>
+			<li><a id="login-trigger" class="nav-link">Login</a></li>
+			<li><a id="register-trigger" class="nav-link">Register</a></li>
+			<li><a id="create-trigger" class="nav-link">Create</a></li>
+			<li><a id="list-trigger" class="nav-link">MyList</a></li>
+			<li><a id="logout-trigger" class="nav-link">Logout</a></li>
+		</ul>
+	</nav>
 	<main>
-		<section class="landing-page">
-			<nav role="navigation">
-				<ul class="nav">
-					<li>MyRecipes</li>
-					<div class="nav-links">
-						<a class="register-btn"><li>Register</li></a>
-						<a class="login-btn"><li>Login</li></a>
-					</div>
-				</ul>
-			</nav>
+		<section id="landing-page">
 			<div class="header-background">
 				<header role="header">
 					<h1 class="title">MyRecipes</h1>
 					<p>Keep and save all your Recipes here!</p>
 				</header>
 			</div>
-			<div class="info">
+			<div class="intro-info flex-row">
 				<div>
 					<img src="http://www.stickpng.com/assets/images/585e4bf3cb11b227491c339a.png">
 					<p>Sign up and own a personal account and get started on making your recipes</p>
@@ -35,44 +34,33 @@
 				</div>
 			</div>
 		</section>
-		<section class="login-page">
-			<div class="account-container">
-				<form class="login-register-form">
-					<h3>Sign in to your account</h3>
-					<label for="loginInput">Username</label>
-					<input id="loginInput" class="form-input-account" type="text" name="username">
-					<label for="passwordInput">Password</label>
-					<input id="passwordInput" class="form-input-account" type="text" name="password">
-					<button id="login-submit" type="submit">Login</button>
-				</form>
-			</div>
+		<section id="login-page">
+			<form id="login-form" class="login-register-form">
+				<h3>Sign in to your account</h3>
+				<label for="loginInput">Username</label>
+				<input id="loginInput" class="form-input-account" type="text" name="username">
+				<label for="loginPassword">Password</label>
+				<input id="loginPassword" class="form-input-account" type="text" name="password">
+				<button type="submit">Login</button>
+			</form>
 		</section>
-		<section class="register-page">
-			<div class="account-container">
-				<form class="login-register-form">
-					<h3>Create an account</h3>
-					<label for="registerInput">Username</label>
-					<input id="registerInput" class="form-input-account" type="text" name="username">
-					<label for="registerPassword">Password</label>
-					<input id="registerPassword" class="form-input-account" type="text" name="password">
-					<label for="confirmPassword">Confirm Password</label>
-					<input id="confirmPassword" class="form-input-account" type="text" name="confirm-password">
-					<button id="register-submit" type="submit">Sign Up</button>
-				</form>
-			</div>
+		<section id="register-page">
+			<form id="register-form" class="login-register-form">
+				<h3>Create an account</h3>
+				<label for="registerUsername">Username</label>
+				<input id="registerUsername" class="form-input-account" type="text" name="username" required>
+				<label for="registerPassword">Password</label>
+				<input id="registerPassword" class="form-input-account" type="text" name="password" required>
+				<label for="confirmPassword">Confirm Password</label>
+				<input id="confirmPassword" class="form-input-account" type="text" name="confirm-password" required>
+				<button type="submit">Sign Up</button>
+			</form>
 		</section>
-		<section class="list-page">
-			<nav role="navigation">
-				<ul class="nav nav-account">
-					<li>MyRecipes</li>
-					<a class="create-btn"><li>Create</li></a>
-					<a class="logout-btn"><li>Logout</li></a>
-				</ul>
-			</nav>
+		<section id="list-page">
 			<div class="list">
 				<h1>My List</h1>
 				<div class="recipe">
-					<button class="recipe-1 btn">Chocolate cake</button>
+					<button class="recipe-btn">Chocolate cake</button>
 					<div class="recipe-info">
 						<p>Ingredients:</p>
 						<ul>
@@ -88,64 +76,39 @@
 							<li>1 tsp  Vanilla Extract</li>
 							<li>5 cups Sugar</li>
 						</ol>
-						<button>Edit</button>
-						<button>Delete</button>
+						<button id="edit-recipe">Edit</button>
+						<button id="delete-recipe">Delete</button>
 					</div>
 				</div>
-				<div class="recipe">
-					<button class="recipe-1 btn">Chocolate cake</button>
-					<div class="recipe-info">
-						<p>Ingredients:</p>
-						<ul>
-							<li>5 cups Flour</li>
-							<li>2 cups Melted chocolate</li>
-							<li>1 tsp  Vanilla Extract</li>
-							<li>5 cups Sugar</li>
-						</ul>
-						<p>Directions:</p>
-						<ol>
-							<li>5 cups Flour</li>
-							<li>2 cups Melted chocolate</li>
-							<li>1 tsp  Vanilla Extract</li>
-							<li>5 cups Sugar</li>
-						</ol>
-						<button>Edit</button>
-						<button>Delete</button>
-					</div>
-				</div>
-		</section>
-		<section class="create-recipe-page">
-			<nav role="navigation">
-				<ul class="nav nav-account">
-					<li>MyRecipes</li>
-					<a class="list-btn"><li>MyList</li></a>
-					<a class="logout-btn"><li>Logout</li></a>
-				</ul>
-			</nav>
-			<div class="create-recipe">
-				<h1>Create Recipe</h1>
-				<form class="recipe-form">
-					<fieldset>
-						<label>Name:</label>
-						<input type="text" name="">
-					</fieldset>
-					<fieldset>
-						<label>Description:</label>
-						<textarea rows="8" cols="40"></textarea>
-					</fieldset>
-					<fieldset>
-						<label>Ingredients:</label>
-						<textarea rows="8" cols="40"></textarea>
-					</fieldset>
-					<fieldset>
-						<label>Directions:</label>
-						<textarea rows="8" cols="40"></textarea>
-					</fieldset>
-					<button class="save-recipe" type="submit">Save</button>
-				</form>
 			</div>
 		</section>
-		<footer></footer>
+		<section id="create-page">
+			<form id="recipe-form">
+				<h1 class="create-title">Create Recipe</h1>
+				<fieldset>
+					<label>Name:</label>
+					<input id="create-name" class="create-input" type="text" required>
+				</fieldset>
+				<fieldset>
+					<label>Description:</label>
+					<textarea id="create-description" class="create-input" rows="8" cols="40"></textarea>
+				</fieldset>
+				<fieldset>
+					<label>Ingredients:</label>
+					<textarea id="create-ingredients" class="create-input" rows="8" cols="40"></textarea>
+				</fieldset>
+				<fieldset>
+					<label>Directions:</label>
+					<textarea id="create-directions" class="create-input" rows="8" cols="40"></textarea>
+				</fieldset>
+				<button class="save-recipe" type="submit">Save</button>
+			</form>
+		</section>
 	</main>
+	<footer>
+		
+	</footer>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="client.js"></script>
 </body>
 </html>

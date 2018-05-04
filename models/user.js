@@ -4,17 +4,19 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
-	username: {
-		type: String,
-		required: false},
-	password: {
-		type: String,
-		required: false}
+    username: {
+        type: String,
+        required: false
+    },
+    password: {
+        type: String,
+        required: false
+    }
 });
 
-userSchema.methods.validatePassword = function(password, callback) {
+userSchema.methods.validatePassword = function(password, callback){
     bcrypt.compare(password, this.password, (err, isValid) => {
-        if (err) {
+        if(err){
             callback(err);
             return;
         }
