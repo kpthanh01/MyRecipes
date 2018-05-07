@@ -26,7 +26,7 @@ nav{
 	text-decoration: none;
 
 }
-.nav-link{
+.nav li{
 	cursor: pointer;
 }
 
@@ -169,7 +169,7 @@ header{
 	margin-left: 17px;
 }
 
-.displayNone{
+.hideNavLink{
 	display: none;
 }
 

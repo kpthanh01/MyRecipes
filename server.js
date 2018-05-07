@@ -1,12 +1,16 @@
-"use strict"
+const User = require('./models/user');
+const Recipe = require('./models/recipe');
+const {DATABASE_URL, PORT} = require('./config');
 
 const express = require('express');
-const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const {DATABASE_URL, PORT} = require('./config');
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
+const BasicStrategy = require('passport-http').BasicStrategy;
 
+const app = express();
 
 app.use(morgan('common'));
 app.use(bodyParser.json());
@@ -57,10 +61,149 @@ if(require.main === module){
 
 // -------------USER ENDPOINTS---------------------------
 
+// create a new user
+app.post('/users/register', (req, res) => {
+
+	// takes the username and password from the newUserObject in client.js
+	let username = req.body.username;
+	let password = req.body.password;
+
+	// create a new encryption key (salt)
+	bcrypt.genSalt(10, (err, salt) =>{
+		if(err){
+			return res.status(500).json({
+				message: 'Internal server error'
+			});
+		}
+
+		// with the new key, encrypt the current password
+		bcrypt.hash(password, salt, (err, hash) => {
+			if(err){
+				return res.status(500).json({
+					message: 'Internal server error'
+				});
+			}
+
+			User.create({
+				username,
+				password: hash
+			}, (err, item) => {
+
+				// if the database connection is NOT succesfull
+				if(err){
+					return res.status(500).json({
+						message: 'Internal server error'
+					});
+				}
+
+				// if the database connection is succesfull
+				if(item){
+					console.log(`User \`${username}\` created.`);
+					return res.json(item);
+				}
+			});
+		});
+	});
+});
 
 
+// login users
+app.post('/users/login', (req, res) => {
+
+	// takes the username and password from the loginUserObject in client.js
+	const username = req.body.username;
+	const password = req.body.password;
+
+	// find if user is in the database
+	User.findOne({
+			username: req.body.username
+		}, function(err, items) {
+			// if no connection
+			if(err){
+				return res.status(500).json({
+					message: 'Internal server error'
+				});
+			}
+
+			// if no user found
+			if(!items){
+				return res.status(401).json({
+					message: 'Not Found'
+				});
+			}
+
+			// if user is found
+			else {
+				items.validatePassword(req.body.password, function(err, isValid){
+					// if password validation is not working
+					if(err){
+						return res.status(500).json({
+							message: 'Internal server error'
+						});
+					}
+
+					// if password is not valid
+					if(!isValid){
+						return res.status(401).json({
+							message: 'Not Found'
+						});
+					}
+
+					// if password is valid
+					else {
+						return res.json(items);
+					}
+				});
+			}
+		});
+});
+
+// get all users recipe
+app.get('/recipe/get/:user', (req, res) => {
+	console.log(req.params.user);
+	Recipe.find({
+		user: req.params.user
+	}, function(err, recipes){
+		if(err){
+			res.send(err);
+		} 
+		return res.json(recipes);
+	});
+});
 
 
+// create new recipe
+app.post('/recipe/create', (req, res) => {
+
+	let name = req.body.name;
+	let description = req.body.description;
+	let ingredients = req.body.ingredients;
+	let directions = req.body.directions;
+	let user = req.body.user;
+
+	Recipe.create({
+		name,
+		description,
+		ingredients,
+		directions,
+		user
+	}, (err, item) => {
+		if(err){
+			return res.status(500).json({
+				message: 'Internal server error'
+			});
+		}
+		if(item){
+			console.log(`The recipe \'${name}\' is created`)
+			return res.json(item);
+		}
+	})
+
+});
+
+// update recipe
+
+// delete recipe
 
 
 

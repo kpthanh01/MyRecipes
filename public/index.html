@@ -8,12 +8,13 @@
 	<nav role="navigation">
 		<ul class="nav flex-row">
 			<li>MyRecipes</li>
-			<li><a id="login-trigger" class="nav-link">Login</a></li>
-			<li><a id="register-trigger" class="nav-link">Register</a></li>
-			<li><a id="create-trigger" class="nav-link">Create</a></li>
-			<li><a id="list-trigger" class="nav-link">MyList</a></li>
-			<li><a id="logout-trigger" class="nav-link">Logout</a></li>
+			<li id="login-btn"><a id="login-trigger">Login</a></li>
+			<li id="register-btn"><a id="register-trigger">Register</a></li>
+			<li id="create-btn"><a id="create-trigger">Create</a></li>
+			<li id="list-btn"><a id="list-trigger">MyList</a></li>
+			<li id="logout-btn"><a id="logout-trigger">Logout</a></li>
 		</ul>
+		<input id="loggedUserName" type="hidden" name="loggedUserName" value="">
 	</nav>
 	<main>
 		<section id="landing-page">
@@ -38,9 +39,9 @@
 			<form id="login-form" class="login-register-form">
 				<h3>Sign in to your account</h3>
 				<label for="loginInput">Username</label>
-				<input id="loginInput" class="form-input-account" type="text" name="username">
+				<input id="loginInput" class="form-input-account" type="text" name="username" value="demo">
 				<label for="loginPassword">Password</label>
-				<input id="loginPassword" class="form-input-account" type="text" name="password">
+				<input id="loginPassword" class="form-input-account" type="text" name="password" value="1234">
 				<button type="submit">Login</button>
 			</form>
 		</section>
@@ -48,11 +49,11 @@
 			<form id="register-form" class="login-register-form">
 				<h3>Create an account</h3>
 				<label for="registerUsername">Username</label>
-				<input id="registerUsername" class="form-input-account" type="text" name="username" required>
+				<input id="registerUsername" class="form-input-account" type="text" name="username" value="demo" required>
 				<label for="registerPassword">Password</label>
-				<input id="registerPassword" class="form-input-account" type="text" name="password" required>
+				<input id="registerPassword" class="form-input-account" type="text" name="password" value="1234" required>
 				<label for="confirmPassword">Confirm Password</label>
-				<input id="confirmPassword" class="form-input-account" type="text" name="confirm-password" required>
+				<input id="confirmPassword" class="form-input-account" type="text" name="confirm-password" value="1234" required>
 				<button type="submit">Sign Up</button>
 			</form>
 		</section>
@@ -87,19 +88,19 @@
 				<h1 class="create-title">Create Recipe</h1>
 				<fieldset>
 					<label>Name:</label>
-					<input id="create-name" class="create-input" type="text" required>
+					<input id="create-name" class="create-input" type="text" value="Chocolate Cake" required>
 				</fieldset>
 				<fieldset>
 					<label>Description:</label>
-					<textarea id="create-description" class="create-input" rows="8" cols="40"></textarea>
+					<textarea id="create-description" class="create-input" rows="8" cols="40">Its a chocolate cake</textarea>
 				</fieldset>
 				<fieldset>
 					<label>Ingredients:</label>
-					<textarea id="create-ingredients" class="create-input" rows="8" cols="40"></textarea>
+					<textarea id="create-ingredients" class="create-input" rows="8" cols="40">1 flour, 2 cups of whatever</textarea>
 				</fieldset>
 				<fieldset>
 					<label>Directions:</label>
-					<textarea id="create-directions" class="create-input" rows="8" cols="40"></textarea>
+					<textarea id="create-directions" class="create-input" rows="8" cols="40">1) mix 2) bake</textarea>
 				</fieldset>
 				<button class="save-recipe" type="submit">Save</button>
 			</form>
