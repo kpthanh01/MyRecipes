@@ -41,19 +41,6 @@ $('#create-trigger').click(function(event){
 	$('#create-page').show();
 });
 
-
-// -------------Temp Triggers-----------
-$('#logout-trigger').click(function(event){
-	event.preventDefault();
-	$('section').hide();
-	$('#login-btn').removeClass('hideNavLink');
-	$('#register-btn').removeClass('hideNavLink');
-	$('#create-btn').addClass('hideNavLink');
-	$('#list-btn').addClass('hideNavLink');
-	$('#logout-btn').addClass('hideNavLink');
-	$('#landing-page').show();
-});
-
 // ----------Login Submit-----------------------
 
 $('#login-form').submit(function(event){
@@ -180,7 +167,9 @@ $('#recipe-form').submit(function(event){
 
 
 // --------Logout----------------
-
+$('#logout-trigger').on('click', function(event){
+	location.reload();
+});
 
 
 
