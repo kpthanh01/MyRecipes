@@ -163,7 +163,6 @@ $('#recipe-form').submit(function(event){
 	})
 	.done(function(result){
 		alert('Recipe has been saved!');
-		console.log(result);
 		getRecipe(loggedUser);
 		$('.recipe-count').html('');
 	})
@@ -181,10 +180,30 @@ $('#recipe-form').submit(function(event){
 
 
 // ---------Update Recipe----------
-$('.edit-recipe').click(function(){
-	$('section').hide();
-	$('#edit-page').show();
-
+$('.list').on('click', '.edit-recipe', function(event){
+	event.preventDefault();
+	const loggedUser = $('#loggedUserName').val();
+	let recipeId = $(event.target).closest('.recipe').find('.recipe-Id').val();	
+	$.ajax({
+		type: 'GET',
+		url: `/recipe/${recipeId}`,
+		dataType: 'json'
+	})
+	.done(function(result){
+		console.log(result);
+		$('section').hide();
+		$('#create-btn').addClass('hideNavLink');
+		$('#list-btn').removeClass('hideNavLink');
+		$('#edit-description').html(result.description);
+		$('#edit-ingredients').html(result.ingredients);
+		$('#edit-directions').html(result.directions);
+		$('#edit-page').show();
+	})
+	.fail(function(jqXHR, error, errorThrown){
+		console.log(jqXHR);
+		console.log(error);
+		console.log(errorThrown);
+	});
 });
 
 
@@ -197,7 +216,7 @@ $('.list').on('click', '.delete-recipe', function(event){
 	let recipeId = $(event.target).closest('.recipe').find('.recipe-Id').val();
 	$.ajax({
 		type: 'DELETE',
-		url: `/recipe/delete/${recipeId}`
+		url: `/recipe/delete/${recipeId}`,
 	})
 	.done(function(result){
 		alert('Recipe has been deleted!');
@@ -242,34 +261,17 @@ function displayRecipe(result){
 function getRecipe(loggedUser){
 	let results = $.ajax({
 		type: 'GET',
-		url: `/recipe/get/${loggedUser}`,
+		url: `/recipe/user/${loggedUser}`,
 		dataType: 'json'
 	})
 	.done(function(result){
 		if(result == ''){
 			$('.recipe-count').html('You have no recipes saved!');
+			displayRecipe(result);
 		} else {
-			console.log(result);
 			displayRecipe(result);
 		}
 		
-	})
-	.fail(function(jqXHR, error, errorThrown){
-		console.log(jqXHR);
-		console.log(error);
-		console.log(errorThrown);
-	});
-}
-
-// ------Get a single Recipe by Id for edit-----------
-function getRecipeById(id){
-	let results = $.ajax({
-		type: 'GET',
-		url: `/recipe/update/:${id}`,
-		dataType: 'json'
-	})
-	.done(function(result){
-		console.log(result);
 	})
 	.fail(function(jqXHR, error, errorThrown){
 		console.log(jqXHR);

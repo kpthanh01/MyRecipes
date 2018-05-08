@@ -158,17 +158,28 @@ app.post('/users/login', (req, res) => {
 		});
 });
 
-// get all users recipe
-app.get('/recipe/get/:user', (req, res) => {
-	console.log(req.params.user);
+// get all user's recipe
+app.get('/recipe/user/:userId', (req, res) => {
 	Recipe.find({
-		user: req.params.user
+		user: req.params.userId
 	}, function(err, recipes){
 		if(err){
-			res.send(err)
+			res.send(err);
 		} 
 		return res.json(recipes);
 	});
+});
+
+// get recipe by id
+app.get('/recipe/:id', (req, res) => {
+	Recipe.findById(req.params.id).exec().then(function(recipe){
+		return res.json(recipe);
+	})
+	.catch(err => {
+		return res.status(500).json({
+			message: 'Internal server error'
+		});
+	})
 });
 
 
