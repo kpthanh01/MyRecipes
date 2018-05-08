@@ -141,20 +141,20 @@ header{
 
 /*---------------------------------------*/
 /*create-page*/
-#recipe-form{
+#recipe-form, #edit-form{
 	max-width: 80%;
 	margin: 50px auto;
 }
-#recipe-form fieldset {
+#recipe-form fieldset, #edit-form fieldset{
 	border: none;
 	margin-bottom: 20px;
 	font-size: 20px;
 }
-.create-title{
+.form-title{
 	margin-bottom: 20px;
 	font-size: 40px;
 }
-.create-input{
+.recipe-input{
 	display: block;
 	margin-top: 10px;
 	padding: 8px;

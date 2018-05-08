@@ -4,10 +4,6 @@ $(document).ready(function(){
 	$('#list-btn').addClass('hideNavLink');
 	$('#logout-btn').addClass('hideNavLink');
 	$('#landing-page').show();
-	// $('#login-page').show();
-	// $('#register-page').show();
-	// $('#list-page').show();
-	// $('#create-page').show();
 });
 
 // -----------Triggers----------------
@@ -45,7 +41,6 @@ $('#create-trigger').click(function(event){
 });
 
 
-
 // -------------Temp Triggers-----------
 $('#logout-trigger').click(function(event){
 	event.preventDefault();
@@ -57,17 +52,6 @@ $('#logout-trigger').click(function(event){
 	$('#logout-btn').addClass('hideNavLink');
 	$('#landing-page').show();
 });
-
-// $(document).on('click','#login-submit', function(event){
-// 	event.preventDefault();
-// 	$('section').hide();
-// 	$('#list-page').show();
-// });
-
-// $(document).on('click', , function(event){
-// 	event.preventDefault();
-
-// });
 
 // ----------Login Submit-----------------------
 
@@ -98,7 +82,7 @@ $('#login-form').submit(function(event){
 			$('#logout-btn').removeClass('hideNavLink');
 			$('#list-page').show();
 			$('#loggedUserName').val(result.username);
-			displayRecipe(loginUserObject.username);
+			getRecipe(loginUserObject.username);
 		})
 		.fail(function(jqXHR, error, errorThrown){
 			console.log(jqXHR);
@@ -140,10 +124,7 @@ $('#register-form').submit(function(event){
 			$('#logout-btn').removeClass('hideNavLink');
 			$('#list-page').show();
 			$('#loggedUserName').val(result.username);
-			displayRecipe(newUserObject.username);
-
-
-
+			getRecipe(newUserObject.username);
 		})
 		.fail(function(jqXHR, error, errorThrown){
 			console.log(jqXHR);
@@ -181,7 +162,10 @@ $('#recipe-form').submit(function(event){
 		contentType: 'application/json'
 	})
 	.done(function(result){
+		alert('Recipe has been saved!');
 		console.log(result);
+		getRecipe(loggedUser);
+		$('.recipe-count').html('');
 	})
 	.fail(function(jqXHR, error, errorThrown){
 		console.log(jqXHR);
@@ -197,28 +181,91 @@ $('#recipe-form').submit(function(event){
 
 
 // ---------Update Recipe----------
+$('.edit-recipe').click(function(){
+	$('section').hide();
+	$('#edit-page').show();
 
+});
 
 
 
 
 // -----------Delete Recipe---------
-
+$('.list').on('click', '.delete-recipe', function(event){
+	event.preventDefault();
+	const loggedUser = $('#loggedUserName').val();
+	let recipeId = $(event.target).closest('.recipe').find('.recipe-Id').val();
+	$.ajax({
+		type: 'DELETE',
+		url: `/recipe/delete/${recipeId}`
+	})
+	.done(function(result){
+		alert('Recipe has been deleted!');
+		getRecipe(loggedUser);
+	})
+	.fail(function(jqXHR, error, errorThrown){
+		console.log(jqXHR);
+		console.log(error);
+		console.log(errorThrown);
+	});
+});
 
 
 
 // -------------MISC---------------------
 
 // trigger animation to shwo detail info of a recipe
-$('.recipe-btn').click(function(){
-	$(this).next().slideToggle(500);
+$('.list').on('click', '.recipe-btn', function(event){
+	$(event.target).next().slideToggle(500);
 });
 
 // --------Display Users Recipes----------
-function displayRecipe(loggedUser){
+function displayRecipe(result){
+	let buildRecipe = '';
+	$.each(result, function(resultKey, resultValue) {
+		buildRecipe += '<div class="recipe">';
+		buildRecipe += `<input class="recipe-Id" type="hidden" value="${resultValue._id}">`;
+		buildRecipe += `<button class="recipe-btn">${resultValue.name}</button>`;
+		buildRecipe += '<div class="recipe-info">';
+		buildRecipe += `<p>Description: ${resultValue.description}</p>`;
+		buildRecipe += `<p>Ingredients: ${resultValue.ingredients}</p>`;
+		buildRecipe += `<p>Directions: ${resultValue.directions}</p>`;
+		buildRecipe += '<button class="edit-recipe">Edit</button>';
+		buildRecipe += '<button class="delete-recipe">Delete</button>';
+		buildRecipe += '</div>';
+		buildRecipe += '</div>';
+	})
+	$('.list').html(buildRecipe);	
+}
+
+
+function getRecipe(loggedUser){
 	let results = $.ajax({
 		type: 'GET',
 		url: `/recipe/get/${loggedUser}`,
+		dataType: 'json'
+	})
+	.done(function(result){
+		if(result == ''){
+			$('.recipe-count').html('You have no recipes saved!');
+		} else {
+			console.log(result);
+			displayRecipe(result);
+		}
+		
+	})
+	.fail(function(jqXHR, error, errorThrown){
+		console.log(jqXHR);
+		console.log(error);
+		console.log(errorThrown);
+	});
+}
+
+// ------Get a single Recipe by Id for edit-----------
+function getRecipeById(id){
+	let results = $.ajax({
+		type: 'GET',
+		url: `/recipe/update/:${id}`,
 		dataType: 'json'
 	})
 	.done(function(result){

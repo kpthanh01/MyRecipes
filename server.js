@@ -165,7 +165,7 @@ app.get('/recipe/get/:user', (req, res) => {
 		user: req.params.user
 	}, function(err, recipes){
 		if(err){
-			res.send(err);
+			res.send(err)
 		} 
 		return res.json(recipes);
 	});
@@ -202,9 +202,21 @@ app.post('/recipe/create', (req, res) => {
 });
 
 // update recipe
+app.put('/recipe/update/:id', (req, res) => {
 
+});
 // delete recipe
-
+app.delete('/recipe/delete/:id', (req, res) => {
+	Recipe.findByIdAndRemove(req.params.id).exec().then(function(recipe){
+		console.log(`Deleted recipe item ${req.params.id}`);
+		return res.status(204).end();
+	})
+	.catch(function(err){
+		return res.status(500).json({
+			message: 'Internal server error'
+		});
+	});
+});
 
 
 

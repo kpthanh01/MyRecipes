@@ -58,49 +58,77 @@
 			</form>
 		</section>
 		<section id="list-page">
+			<h1>My List</h1>
+			<h3 class="recipe-count"></h3>
 			<div class="list">
-				<h1>My List</h1>
-				<div class="recipe">
-					<button class="recipe-btn">Chocolate cake</button>
-					<div class="recipe-info">
-						<p>Ingredients:</p>
-						<ul>
-							<li>5 cups Flour</li>
-							<li>2 cups Melted chocolate</li>
-							<li>1 tsp  Vanilla Extract</li>
-							<li>5 cups Sugar</li>
-						</ul>
-						<p>Directions:</p>
-						<ol>
-							<li>5 cups Flour</li>
-							<li>2 cups Melted chocolate</li>
-							<li>1 tsp  Vanilla Extract</li>
-							<li>5 cups Sugar</li>
-						</ol>
-						<button id="edit-recipe">Edit</button>
-						<button id="delete-recipe">Delete</button>
+				<!-- <div>
+					<button></button>
+					<div>
+						<p></p>
+						<p></p>
+						<p></p>
+						<form class="edit-recipe-form">
+							<input class="editRecipeId" type="hidden" value="">
+							<input class="editRecipeUsername" type="hidden" value="">
+							<fieldset>
+								<label>Description:</label>
+								<textarea class="create-input edit-description" rows="8" cols="40">Its a chocolate cake</textarea>
+							</fieldset>
+							<fieldset>
+								<label>Ingredients:</label>
+								<textarea class="create-input edit-ingredients" rows="8" cols="40">1 flour, 2 cups of whatever</textarea>
+							</fieldset>
+							<fieldset>
+								<label>Directions:</label>
+								<textarea class="create-input edit-directions" rows="8" cols="40">1) mix 2) bake</textarea>
+							</fieldset>
+							<button class="save-edit-recipe" type="submit">Save</button>
+						</form>
+						<button>Edit</button>
+						<button>Delete</button>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</section>
 		<section id="create-page">
 			<form id="recipe-form">
-				<h1 class="create-title">Create Recipe</h1>
+				<h1 class="form-title">Create Recipe</h1>
 				<fieldset>
 					<label>Name:</label>
-					<input id="create-name" class="create-input" type="text" value="Chocolate Cake" required>
+					<input id="create-name" class="recipe-input" type="text" value="Chocolate Cake" required>
 				</fieldset>
 				<fieldset>
 					<label>Description:</label>
-					<textarea id="create-description" class="create-input" rows="8" cols="40">Its a chocolate cake</textarea>
+					<textarea id="create-description" class="recipe-input" rows="8" cols="40">Its a chocolate cake</textarea>
 				</fieldset>
 				<fieldset>
 					<label>Ingredients:</label>
-					<textarea id="create-ingredients" class="create-input" rows="8" cols="40">1 flour, 2 cups of whatever</textarea>
+					<textarea id="create-ingredients" class="recipe-input" rows="8" cols="40">1 flour, 2 cups of whatever</textarea>
 				</fieldset>
 				<fieldset>
 					<label>Directions:</label>
-					<textarea id="create-directions" class="create-input" rows="8" cols="40">1) mix 2) bake</textarea>
+					<textarea id="create-directions" class="recipe-input" rows="8" cols="40">1) mix 2) bake</textarea>
+				</fieldset>
+				<button class="save-recipe" type="submit">Save</button>
+			</form>
+		</section>
+		<section id="edit-page">
+			<form id="edit-form">
+				<h1 class="form-title">Edit Recipe</h1>
+				<fieldset>
+					<label class="edit-recipe-name"></label>
+				</fieldset>
+				<fieldset>
+					<label>Description:</label>
+					<textarea id="edit-description" class="recipe-input" rows="8" cols="40"></textarea>
+				</fieldset>
+				<fieldset>
+					<label>Ingredients:</label>
+					<textarea id="edit-ingredients" class="recipe-input" rows="8" cols="40"></textarea>
+				</fieldset>
+				<fieldset>
+					<label>Directions:</label>
+					<textarea id="edit-directions" class="recipe-input" rows="8" cols="40"></textarea>
 				</fieldset>
 				<button class="save-recipe" type="submit">Save</button>
 			</form>
