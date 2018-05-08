@@ -29,6 +29,7 @@ $('#list-trigger').click(function(event){
 	$('section').hide();
 	$('#create-btn').removeClass('hideNavLink');
 	$('#list-btn').addClass('hideNavLink');
+	$('.recipe-info').hide();
 	$('#list-page').show();
 });
 
@@ -165,6 +166,10 @@ $('#recipe-form').submit(function(event){
 		alert('Recipe has been saved!');
 		getRecipe(loggedUser);
 		$('.recipe-count').html('');
+		$('section').hide();
+		$('#create-btn').removeClass('hideNavLink');
+		$('#list-btn').addClass('hideNavLink');
+		$('#list-page').show();
 	})
 	.fail(function(jqXHR, error, errorThrown){
 		console.log(jqXHR);
@@ -179,7 +184,7 @@ $('#recipe-form').submit(function(event){
 
 
 
-// ---------Update Recipe----------
+// ---------Go to Update Recipe Page----------
 $('.list').on('click', '.edit-recipe', function(event){
 	event.preventDefault();
 	const loggedUser = $('#loggedUserName').val();
@@ -194,9 +199,10 @@ $('.list').on('click', '.edit-recipe', function(event){
 		$('section').hide();
 		$('#create-btn').addClass('hideNavLink');
 		$('#list-btn').removeClass('hideNavLink');
-		$('#edit-description').html(result.description);
-		$('#edit-ingredients').html(result.ingredients);
-		$('#edit-directions').html(result.directions);
+		$('#edit-recipe-id').val(recipeId);
+		$('#edit-description').val(result.description);
+		$('#edit-ingredients').val(result.ingredients);
+		$('#edit-directions').val(result.directions);
 		$('#edit-page').show();
 	})
 	.fail(function(jqXHR, error, errorThrown){
@@ -206,6 +212,44 @@ $('.list').on('click', '.edit-recipe', function(event){
 	});
 });
 
+// --------Update Recipe--------------
+$('#edit-form').submit(function(event){
+	event.preventDefault();
+
+	let editDescription = $('#edit-description').val();
+	let editIngredients = $('#edit-ingredients').val();
+	let editDirections = $('#edit-directions').val();
+	let recipeId = $('#edit-recipe-id').val();
+	const loggedUser = $('#loggedUserName').val();
+
+	const updateRecipeObject = {
+		description: editDescription,
+		ingredients: editIngredients,
+		directions: editDirections
+	};
+
+	$.ajax({
+		type: 'PUT',
+		url: `/recipe/update/${recipeId}`,
+		dataType: 'json',
+		data: JSON.stringify(updateRecipeObject),
+		contentType: 'application/json'
+	})
+	.done(function(result){
+		alert('Recipe has been updated');
+		getRecipe(loggedUser);
+		$('section').hide();
+		$('#create-btn').removeClass('hideNavLink');
+		$('#list-btn').addClass('hideNavLink');
+		$('#list-page').show();
+	})
+	.fail(function(jqXHR, error, errorThrown){
+		console.log(jqXHR);
+		console.log(error);
+		console.log(errorThrown);
+	});
+
+});
 
 
 

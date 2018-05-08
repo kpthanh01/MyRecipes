@@ -215,6 +215,26 @@ app.post('/recipe/create', (req, res) => {
 // update recipe
 app.put('/recipe/update/:id', (req, res) => {
 
+	let toUpdate = {};
+	let updateableFields = ['description', 'ingredients', 'directions'];
+	updateableFields.forEach(function(field){
+		if(field in req.body){
+			toUpdate[field] = req.body[field];
+		}
+	});
+
+	Recipe.findByIdAndUpdate(req.params.id, {
+		$set: toUpdate
+	})
+	.exec()
+	.then(function(recipe){
+		return res.status(204).end();
+	})
+	.catch(function(err){
+		return res.status(500).json({
+			message: 'Internal sever error'
+		});
+	});
 });
 // delete recipe
 app.delete('/recipe/delete/:id', (req, res) => {
