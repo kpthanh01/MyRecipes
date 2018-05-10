@@ -5,10 +5,7 @@ html, body, ul, h1, h3, p, img{
 	margin: 0;
 	padding: 0;
 }
-body {
-	background: url(background_texture.png);
-	background-size: cover;
-}
+
 .flex-row{
 	display: flex;
 	flex-direction: row;
