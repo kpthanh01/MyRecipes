@@ -8,7 +8,8 @@ $(document).ready(function(){
 
 // -----------Triggers----------------
 
-$('#login-trigger').click(function(event){
+// Go to login page
+$('.login-trigger').click(function(event){
 	event.preventDefault();
 	$('section').hide();
 	$('#login-btn').addClass('hideNavLink');
@@ -16,7 +17,8 @@ $('#login-trigger').click(function(event){
 	$('#login-page').show();
 });
 
-$('#register-trigger').click(function(event){
+// Go to register page
+$('.register-trigger').click(function(event){
 	event.preventDefault();
 	$('section').hide();
 	$('#login-btn').addClass('hideNavLink');
@@ -24,6 +26,7 @@ $('#register-trigger').click(function(event){
 	$('#register-page').show();
 });
 
+// Go to recipe list page
 $('#list-trigger').click(function(event){
 	event.preventDefault();
 	$('section').hide();
@@ -33,6 +36,7 @@ $('#list-trigger').click(function(event){
 	$('#list-page').show();
 });
 
+// Go to create recipe page
 $('#create-trigger').click(function(event){
 	event.preventDefault();
 	$('section').hide();
@@ -41,8 +45,8 @@ $('#create-trigger').click(function(event){
 	$('#create-page').show();
 });
 
-// ----------Login Submit-----------------------
 
+// ----------Login Submit-----------------------
 $('#login-form').submit(function(event){
 	event.preventDefault();
 
@@ -78,7 +82,6 @@ $('#login-form').submit(function(event){
 			console.log(errorThrown);
 			alert('Please check Username and Password');
 		});
-
 	}
 });
 
@@ -122,8 +125,8 @@ $('#register-form').submit(function(event){
 	}
 });
 
-// ------------Create Recipe Submit------------
 
+// ------------Create Recipe Submit------------
 $('#recipe-form').submit(function(event){
 	event.preventDefault();
 
@@ -140,8 +143,6 @@ $('#recipe-form').submit(function(event){
 		directions: recipeDirection,
 		user: loggedUser
 	};
-	console.log(newRecipeObject);
-
 	$.ajax({
 		type: 'POST',
 		url: '/recipe/create',
@@ -164,13 +165,6 @@ $('#recipe-form').submit(function(event){
 		console.log(errorThrown);
 	});
 });
-
-
-// --------Logout----------------
-$('#logout-trigger').on('click', function(event){
-	location.reload();
-});
-
 
 
 // ---------Go to Update Recipe Page----------
@@ -200,6 +194,7 @@ $('.list').on('click', '.edit-recipe', function(event){
 		console.log(errorThrown);
 	});
 });
+
 
 // --------Update Recipe--------------
 $('#edit-form').submit(function(event){
@@ -263,6 +258,11 @@ $('.list').on('click', '.delete-recipe', function(event){
 });
 
 
+// --------Logout----------------
+$('#logout-trigger').on('click', function(event){
+	location.reload();
+});
+
 
 // -------------MISC---------------------
 
@@ -270,6 +270,8 @@ $('.list').on('click', '.delete-recipe', function(event){
 $('.list').on('click', '.recipe-btn', function(event){
 	$(event.target).next().slideToggle(500);
 });
+
+
 
 // --------Display Users Recipes----------
 function displayRecipe(result){
@@ -279,11 +281,11 @@ function displayRecipe(result){
 		buildRecipe += `<input class="recipe-Id" type="hidden" value="${resultValue._id}">`;
 		buildRecipe += `<button class="recipe-btn">${resultValue.name}</button>`;
 		buildRecipe += '<div class="recipe-info">';
-		buildRecipe += `<p>Description: ${resultValue.description}</p>`;
-		buildRecipe += `<p>Ingredients: ${resultValue.ingredients}</p>`;
-		buildRecipe += `<p>Directions: ${resultValue.directions}</p>`;
-		buildRecipe += '<button class="edit-recipe">Edit</button>';
-		buildRecipe += '<button class="delete-recipe">Delete</button>';
+		buildRecipe += `<p><strong>Description:</strong><br> ${resultValue.description}</p>`;
+		buildRecipe += `<p><strong>Ingredients:</strong><br> ${resultValue.ingredients}</p>`;
+		buildRecipe += `<p><strong>Directions:</strong><br> ${resultValue.directions}</p>`;
+		buildRecipe += '<button class="edit-recipe edit-delete-btn">Edit</button>';
+		buildRecipe += '<button class="delete-recipe edit-delete-btn">Delete</button>';
 		buildRecipe += '</div>';
 		buildRecipe += '</div>';
 	})
@@ -303,8 +305,7 @@ function getRecipe(loggedUser){
 			displayRecipe(result);
 		} else {
 			displayRecipe(result);
-		}
-		
+		}	
 	})
 	.fail(function(jqXHR, error, errorThrown){
 		console.log(jqXHR);

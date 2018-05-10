@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title></title>
+	<title>MyRecipes</title>
 	<link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
 	<nav role="navigation">
 		<ul class="nav flex-row">
 			<li>MyRecipes</li>
-			<li id="login-btn"><a id="login-trigger">Login</a></li>
-			<li id="register-btn"><a id="register-trigger">Register</a></li>
+			<li id="login-btn"><a class="login-trigger">Login</a></li>
+			<li id="register-btn"><a class="register-trigger">Register</a></li>
 			<li id="create-btn"><a id="create-trigger">Create</a></li>
 			<li id="list-btn"><a id="list-trigger">MyList</a></li>
 			<li id="logout-btn"><a id="logout-trigger">Logout</a></li>
@@ -26,11 +26,11 @@
 			</div>
 			<div class="intro-info flex-row">
 				<div>
-					<img src="http://www.stickpng.com/assets/images/585e4bf3cb11b227491c339a.png">
+					<img src="http://www.stickpng.com/assets/images/585e4bf3cb11b227491c339a.png" alt="account-icon">
 					<p>Sign up and own a personal account and get started on making your recipes</p>
 				</div>
 				<div>
-					<img src="https://cdn3.iconfinder.com/data/icons/text/100/list-512.png">
+					<img src="https://cdn3.iconfinder.com/data/icons/text/100/list-512.png" alt="list-icon">
 					<p>Create, Save, Access, and Update recipes where they are stored in the cloud.</p>
 				</div>
 			</div>
@@ -41,8 +41,9 @@
 				<label for="loginInput">Username</label>
 				<input id="loginInput" class="form-input-account" type="text" name="username" value="demo">
 				<label for="loginPassword">Password</label>
-				<input id="loginPassword" class="form-input-account" type="text" name="password" value="1234">
+				<input id="loginPassword" class="form-input-account" type="password" name="password" value="1234">
 				<button type="submit">Login</button>
+				<p>If you do not have an account <a class="register-trigger link">Register here</a>!</p>
 			</form>
 		</section>
 		<section id="register-page">
@@ -51,44 +52,17 @@
 				<label for="registerUsername">Username</label>
 				<input id="registerUsername" class="form-input-account" type="text" name="username" value="demo" required>
 				<label for="registerPassword">Password</label>
-				<input id="registerPassword" class="form-input-account" type="text" name="password" value="1234" required>
+				<input id="registerPassword" class="form-input-account" type="password" name="password" value="1234" required>
 				<label for="confirmPassword">Confirm Password</label>
-				<input id="confirmPassword" class="form-input-account" type="text" name="confirm-password" value="1234" required>
+				<input id="confirmPassword" class="form-input-account" type="password" name="confirm-password" value="1234" required>
 				<button type="submit">Sign Up</button>
+				<p>If you have an account <a class="login-trigger link">Login here</a>!</p>
 			</form>
 		</section>
 		<section id="list-page">
 			<h1>My List</h1>
-			<h3 class="recipe-count"></h3>
-			<div class="list">
-				<!-- <div>
-					<button></button>
-					<div>
-						<p></p>
-						<p></p>
-						<p></p>
-						<form class="edit-recipe-form">
-							<input class="editRecipeId" type="hidden" value="">
-							<input class="editRecipeUsername" type="hidden" value="">
-							<fieldset>
-								<label>Description:</label>
-								<textarea class="create-input edit-description" rows="8" cols="40">Its a chocolate cake</textarea>
-							</fieldset>
-							<fieldset>
-								<label>Ingredients:</label>
-								<textarea class="create-input edit-ingredients" rows="8" cols="40">1 flour, 2 cups of whatever</textarea>
-							</fieldset>
-							<fieldset>
-								<label>Directions:</label>
-								<textarea class="create-input edit-directions" rows="8" cols="40">1) mix 2) bake</textarea>
-							</fieldset>
-							<button class="save-edit-recipe" type="submit">Save</button>
-						</form>
-						<button>Edit</button>
-						<button>Delete</button>
-					</div>
-				</div> -->
-			</div>
+			<h2 class="recipe-count"></h2>
+			<div class="list"></div>
 		</section>
 		<section id="create-page">
 			<form id="recipe-form">

@@ -15,7 +15,7 @@ nav{
 	color: white;
 	width: 100%;
 	padding: 10px;
-	font-size: 20px;
+	font-size: 25px;
 }
 .nav{
 	justify-content: space-between;
@@ -87,9 +87,14 @@ header{
 	padding: 15px 0 15px;
 }
 .login-register-form > button{
+	width: 100%;
 	margin-top: 12px;
 	padding: 10px 40px 10px;
 	font-size: 15px;
+}
+.login-register-form > p{
+	font-size: 18px;
+	margin-top: 20px;
 }
 .form-input-account{
 	display: block;
@@ -99,29 +104,37 @@ header{
 	height: 40px;
 	border: 1px solid black;
 }
+.link{
+	cursor: pointer;
+	color: blue;
+}
 
 /*------------------------------------*/
 /*list-page*/
-
-.list{
-	padding-top: 100px;
+#list-page h1, .list{
 	max-width: 80%;
 	margin: auto;
-
 }
-.list h1{
+#list-page h1{
 	margin-bottom: 20px;
-	font-size: 30px;
+	padding-top: 80px;
+	font-size: 40px;
+}
+.recipe-count{
+	text-align: center;
 }
 .recipe-info{
 	display: none;
-	padding: 10px;
+	padding: 30px;
 	margin-bottom: 10px;
 	overflow: hidden;
 }
-.recipe-info ul{
-	margin: 8px 0 8px;
-	padding-left: 40px;
+.recipe-info p{
+	margin-bottom: 20px;
+}
+.edit-delete-btn{
+	margin-top: 10px;
+	margin-right: 10px;
 }
 .recipe-btn{
 	background-color: grey;
@@ -173,15 +186,10 @@ header{
 
 
 @media screen and (min-width: 460px){
-	.nav-account{
-		justify-content: center;
+	.recipe-info p{
+		font-size: 20px;
 	}
-	/*.info img{
-		width: 25%;
-	}*/
 }
 @media screen and (min-width: 700px){
-	.nav-account li{
-		margin-right: 80px;
-	}
+
 }
