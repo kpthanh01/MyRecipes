@@ -8,6 +8,15 @@ $(document).ready(function(){
 
 // -----------Triggers----------------
 
+// Go to home page
+$('.homepage-trigger').click(function(event){
+	event.preventDefault();
+	$('section').hide();
+	$('#login-btn').removeClass('hideNavLink');
+	$('#register-btn').removeClass('hideNavLink');
+	$('#landing-page').show();
+})
+
 // Go to login page
 $('.login-trigger').click(function(event){
 	event.preventDefault();

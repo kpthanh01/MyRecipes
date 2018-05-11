@@ -5,28 +5,25 @@ html, body, ul, h1, h3, p, img{
 	margin: 0;
 	padding: 0;
 }
-
-.flex-row{
-	display: flex;
-	flex-direction: row;
-}
-nav{
-	background-color: black;
-	color: white;
-	width: 100%;
-	padding: 10px;
-	font-size: 25px;
+body{
+	font-family: cursive;
 }
 .nav{
-	justify-content: space-between;
+	background-color: black;
+	color: white;
+	font-size: 25px;
 	list-style-type: none;
 	text-decoration: none;
-
+	overflow: hidden;
 }
 .nav li{
 	cursor: pointer;
+	float: left;
+	padding: 10px 20px;
 }
-
+#login-btn, #register-btn, #create-btn, #list-btn, #logout-btn{
+	float: right;
+}
 /*---------------------------------------------------------*/
 /*homePage*/
 
@@ -50,6 +47,8 @@ header{
 	margin-bottom: 20px;
 }
 .intro-info{
+	display: flex;
+	flex-direction: row;
 	justify-content: center;
 	padding-top: 20px;
 	text-align: center;
@@ -70,7 +69,7 @@ header{
 /*login and sign up*/
 
 .login-register-form{
-	margin: 50px auto;
+	margin: 100px auto;
 	max-width: 320px;
 	padding: 25px;
 	border: 1px solid black;
@@ -144,7 +143,7 @@ header{
 	margin-bottom: 10px;
 	width: 100%;
 	text-align: left;
-	font-size: 16px;
+	font-size: 20px;
 	cursor: pointer;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	outline: 0;
@@ -184,12 +183,19 @@ header{
 	display: none;
 }
 
-
+@media screen and (max-width: 460px){
+	.nav{
+		font-size: 20px;
+	}
+}
 @media screen and (min-width: 460px){
 	.recipe-info p{
 		font-size: 20px;
 	}
 }
-@media screen and (min-width: 700px){
-
+@media screen and (min-width: 1000px){
+	#list-page h1, .list{
+		max-width: 50%;
+		margin: auto;
+	}
 }
