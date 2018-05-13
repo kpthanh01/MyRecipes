@@ -54,8 +54,8 @@ function generateRecipeData(){
 }
 
 function tearDownDb(){
-	console.warn('Deleting Database');
-	return mongoose.connection.dropDatabase();
+	// console.warn('Deleting Database');
+	// return mongoose.connection.dropDatabase();
 }
 
 describe('MyRecipe API resources', function(){

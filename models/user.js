@@ -3,6 +3,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
+mongoose.Promise = global.Promise;
+
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -23,6 +25,10 @@ userSchema.methods.validatePassword = function(password, callback){
         callback(null, isValid);
     });
 };
+
+userSchema.statics.hashPassword = function(password){
+    return bcrypt.hash(password, 10);
+}
 
 const User = mongoose.model('User', userSchema);
 
