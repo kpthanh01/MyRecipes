@@ -21,73 +21,72 @@ router.post('/register', bodyParser.json(), (req, res) => {
 	let username = req.body.username;
 	let password = req.body.password;
 
-	User.find({username})
-		.count()
-		.then(count => {
-			if(count > 0){
-				 // There is an existing user with the same username
-		        return Promise.reject({
-		          code: 422,
-		          reason: 'ValidationError',
-		          message: 'Username already taken',
-		        });
-			}
-			// If there is no existing user, hash the password
-      		return User.hashPassword(password);
-		})
-		.then(hash => {
-	      return User.create({
-	        username,
-	        password: hash,
-	      });
-	    })
-	    .then(item => {
-			console.log(`User \`${username}\` created.`);
-			return res.json(item);
-	    })
-		.catch(err => {
-			if(err){
-				return res.status(500).json({
-					message: 'Internal server error'
-				});
-			}
-		})
-	// // create a new encryption key (salt)
-	// bcrypt.genSalt(10, (err, salt) =>{
-	// 	if(err){
-	// 		return res.status(500).json({
-	// 			message: 'Internal server error'
-	// 		});
-	// 	}
-
-	// 	// with the new key, encrypt the current password
-	// 	bcrypt.hash(password, salt, (err, hash) => {
+	// User.find({username})
+	// 	.count()
+	// 	.then(count => {
+	// 		if(count > 0){
+	// 			 // There is an existing user with the same username
+	// 	        return Promise.reject({
+	// 	          code: 422,
+	// 	          reason: 'ValidationError',
+	// 	          message: 'Username already taken',
+	// 	        });
+	// 		}
+	// 		// If there is no existing user, hash the password
+ //      		return User.hashPassword(password);
+	// 	})
+	// 	.then(hash => {
+	//       return User.create({
+	//         username,
+	//         password: hash,
+	//       });
+	//     })
+	//     .then(item => {
+	// 		console.log(`User \`${username}\` created.`);
+	// 		return res.json(item);
+	//     })
+	// 	.catch(err => {
 	// 		if(err){
 	// 			return res.status(500).json({
 	// 				message: 'Internal server error'
 	// 			});
 	// 		}
+	// 	})
+	// create a new encryption key (salt)
+	bcrypt.genSalt(10, (err, salt) =>{
+		if(err){
+			return res.status(500).json({
+				message: 'Internal server error'
+			});
+		}
 
-	// 		User.create({
-	// 			username,
-	// 			password: hash
-	// 		}, (err, item) => {
+		// with the new key, encrypt the current password
+		bcrypt.hash(password, salt, (err, hash) => {
+			if(err){
+				return res.status(500).json({
+					message: 'Internal server error'
+				});
+			}
+			User.create({
+				username,
+				password: hash
+			}, (err, item) => {
 
-	// 			// if the database connection is NOT succesfull
-	// 			if(err){
-	// 				return res.status(500).json({
-	// 					message: 'Internal server error'
-	// 				});
-	// 			}
+				// if the database connection is NOT succesfull
+				if(err){
+					return res.status(500).json({
+						message: 'Internal server error'
+					});
+				}
 
-	// 			// if the database connection is succesfull
-	// 			if(item){
-	// 				console.log(`User \`${username}\` created.`);
-	// 				return res.json(item);
-	// 			}
-	// 		});
-	// 	});
-	// });
+				// if the database connection is succesfull
+				if(item){
+					console.log(`User \`${username}\` created.`);
+					return res.json(item);
+				}
+			});
+		});
+	});
 });
 
 
