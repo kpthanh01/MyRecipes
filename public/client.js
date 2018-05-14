@@ -8,15 +8,6 @@ $(document).ready(function(){
 
 // -----------Triggers----------------
 
-// Go to home page
-$('.homepage-trigger').click(function(event){
-	event.preventDefault();
-	$('section').hide();
-	$('#login-btn').removeClass('hideNavLink');
-	$('#register-btn').removeClass('hideNavLink');
-	$('#landing-page').show();
-})
-
 // Go to login page
 $('.login-trigger').click(function(event){
 	event.preventDefault();
@@ -30,6 +21,7 @@ $('.login-trigger').click(function(event){
 $('.register-trigger').click(function(event){
 	event.preventDefault();
 	$('section').hide();
+	$('.alert').html('');
 	$('#login-btn').addClass('hideNavLink');
 	$('#register-btn').addClass('hideNavLink');
 	$('#register-page').show();
@@ -120,6 +112,7 @@ $('#register-form').submit(function(event){
 		.done(function(result){
 			console.log(result);
 			$('section').hide();
+			$('.alert').html('');
 			$('#create-btn').removeClass('hideNavLink');
 			$('#logout-btn').removeClass('hideNavLink');
 			$('#list-page').show();
@@ -127,6 +120,7 @@ $('#register-form').submit(function(event){
 			getRecipe(newUserObject.username);
 		})
 		.fail(function(jqXHR, error, errorThrown){
+			$('.alert').html('Username is already taken!');
 			console.log(jqXHR);
 			console.log(error);
 			console.log(errorThrown);
@@ -160,7 +154,6 @@ $('#recipe-form').submit(function(event){
 		contentType: 'application/json'
 	})
 	.done(function(result){
-		alert('Recipe has been saved!');
 		getRecipe(loggedUser);
 		$('.recipe-count').html('');
 		$('section').hide();
@@ -256,7 +249,6 @@ $('.list').on('click', '.delete-recipe', function(event){
 		url: `/recipe/delete/${recipeId}`,
 	})
 	.done(function(result){
-		alert('Recipe has been deleted!');
 		getRecipe(loggedUser);
 	})
 	.fail(function(jqXHR, error, errorThrown){

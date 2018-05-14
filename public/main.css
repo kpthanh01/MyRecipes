@@ -5,11 +5,18 @@ html, body, ul, h1, h3, p, img{
 	margin: 0;
 	padding: 0;
 }
-body{
+html, body{
 	font-family: cursive;
+	/*background: #f2f2f2;*/
+}
+html{
+	background: linear-gradient(#d0e3e9, #9cbec9, #3B6478);
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 100%;
 }
 .nav{
-	background-color: black;
+	background-color: #22b1bf;
 	color: white;
 	font-size: 25px;
 	list-style-type: none;
@@ -20,6 +27,9 @@ body{
 	cursor: pointer;
 	float: left;
 	padding: 10px 20px;
+}
+.nav li:hover{
+	color: #f6ce70;
 }
 #login-btn, #register-btn, #create-btn, #list-btn, #logout-btn{
 	float: right;
@@ -41,10 +51,14 @@ header{
 	max-width: 350px;
 	margin: auto;
 	text-align: center;
+	opacity: 0.9;
 }
 .title{
 	font-size: 50px;
 	margin-bottom: 20px;
+}
+header p{
+	font-size: 20px;
 }
 .intro-info{
 	display: flex;
@@ -54,6 +68,7 @@ header{
 	text-align: center;
 }
 .intro-info div{
+	background-color: #f2f2f2;
 	border: 1px solid black;
 	border-radius: 20px;
 	padding: 15px;
@@ -72,6 +87,7 @@ header{
 	margin: 100px auto;
 	max-width: 320px;
 	padding: 25px;
+	background-color: #f2f2f2;
 	border: 1px solid black;
 	border-radius: 10px;
 	font-size: 20px;
@@ -107,6 +123,9 @@ header{
 	cursor: pointer;
 	color: blue;
 }
+.alert{
+	color: red;
+}
 
 /*------------------------------------*/
 /*list-page*/
@@ -123,8 +142,10 @@ header{
 	text-align: center;
 }
 .recipe-info{
+	background-color: #f2f2f2;
+	border-radius: 5px;
 	display: none;
-	padding: 30px;
+	padding: 25px;
 	margin-bottom: 10px;
 	overflow: hidden;
 }
@@ -132,21 +153,32 @@ header{
 	margin-bottom: 20px;
 }
 .edit-delete-btn{
+	color: white;
 	margin-top: 10px;
 	margin-right: 10px;
+	padding: 2px 20px;
+	font-size: 17px;
+	background-color: #22b1bf;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	outline: 0;
 }
 .recipe-btn{
-	background-color: grey;
+	background-color: #22b1bf;
 	border: none;
 	border-radius: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	padding: 15px;
 	margin-bottom: 10px;
 	width: 100%;
 	text-align: left;
 	font-size: 20px;
 	cursor: pointer;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	color: white;
 	outline: 0;
+}
+.recipe-btn:hover, .edit-delete-btn:hover{
+	color: #f6ce70;
 }
 
 /*---------------------------------------*/
@@ -175,8 +207,16 @@ header{
 	resize: none;
 }
 .save-recipe{
+	color: white;
 	padding: 5px 40px;
 	margin-left: 17px;
+	border-radius: 5px;
+	background-color: #22b1bf;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	font-size: 20px;
+}
+.save-recipe:hover{
+	color: #f6ce70;
 }
 
 .hideNavLink{

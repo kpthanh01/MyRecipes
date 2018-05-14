@@ -68,7 +68,6 @@ router.post('/register', bodyParser.json(), (req, res) => {
 					});
 				});
 			}
-
 			// if user is found
 			else {
 				return res.status(401).json({
@@ -76,9 +75,6 @@ router.post('/register', bodyParser.json(), (req, res) => {
 				});
 			}
 		});
-
-
-	
 });
 
 
