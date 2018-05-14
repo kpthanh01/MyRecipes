@@ -31,6 +31,7 @@ $('.register-trigger').click(function(event){
 $('#list-trigger').click(function(event){
 	event.preventDefault();
 	$('section').hide();
+	$('.recipe-input').val('');
 	$('#create-btn').removeClass('hideNavLink');
 	$('#list-btn').addClass('hideNavLink');
 	$('.recipe-info').hide();
@@ -157,6 +158,7 @@ $('#recipe-form').submit(function(event){
 		getRecipe(loggedUser);
 		$('.recipe-count').html('');
 		$('section').hide();
+		$('.recipe-input').val('');
 		$('#create-btn').removeClass('hideNavLink');
 		$('#list-btn').addClass('hideNavLink');
 		$('#list-page').show();
@@ -222,9 +224,9 @@ $('#edit-form').submit(function(event){
 		contentType: 'application/json'
 	})
 	.done(function(result){
-		alert('Recipe has been updated');
 		getRecipe(loggedUser);
 		$('section').hide();
+		$('.recipe-input').val('');
 		$('#create-btn').removeClass('hideNavLink');
 		$('#list-btn').addClass('hideNavLink');
 		$('#list-page').show();

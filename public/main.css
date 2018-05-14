@@ -38,7 +38,7 @@ html{
 /*homePage*/
 
 .header-background{
-	background: url(https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/health_tools/12_powerhouse_vegetables_slideshow/intro_cream_of_crop.jpg);
+	background: url('./images/intro_cream_of_crop.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	padding: 100px 0 100px;
@@ -78,6 +78,7 @@ header p{
 .intro-info img{
 	width: 50%;
 	margin-bottom: 20px;
+	cursor: pointer;
 }
 
 /*---------------------------------------------*/
