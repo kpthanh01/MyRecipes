@@ -38,10 +38,11 @@
 		<section id="login-page">
 			<form id="login-form" class="login-register-form">
 				<h3>Sign in to your account</h3>
+				<span class="alert"></span>
 				<label for="loginInput">Username</label>
-				<input id="loginInput" class="form-input-account" type="text" name="username" value="demo">
+				<input id="loginInput" class="form-input-account" type="text" name="username" value="">
 				<label for="loginPassword">Password</label>
-				<input id="loginPassword" class="form-input-account" type="password" name="password" value="1234">
+				<input id="loginPassword" class="form-input-account" type="password" name="password" value="">
 				<button type="submit">Login</button>
 				<p>If you do not have an account <a class="register-trigger link">Register here</a>!</p>
 			</form>
@@ -51,11 +52,11 @@
 				<h3>Create an account</h3>
 				<span class="alert"></span>
 				<label for="registerUsername">Username</label>
-				<input id="registerUsername" class="form-input-account" type="text" name="username" value="demo" required>
+				<input id="registerUsername" class="form-input-account" type="text" name="username" value="" required>
 				<label for="registerPassword">Password</label>
-				<input id="registerPassword" class="form-input-account" type="password" name="password" value="1234" required>
+				<input id="registerPassword" class="form-input-account" type="password" name="password" value="" required>
 				<label for="confirmPassword">Confirm Password</label>
-				<input id="confirmPassword" class="form-input-account" type="password" name="confirm-password" value="1234" required>
+				<input id="confirmPassword" class="form-input-account" type="password" name="confirm-password" value="" required>
 				<button type="submit">Sign Up</button>
 				<p>If you have an account <a class="login-trigger link">Login here</a>!</p>
 			</form>
@@ -111,12 +112,12 @@
 		</section>
 	</main>
 	<footer>
-		<!-- <ul>
-			<li>Email: <a href="mailto:kpthanh01@gmial.com">kpthanh01@gmail.com</a></li>
-			<li>LinkedIn: <a href="https://www.linkedin.com/in/phamktp/" target="_blank">www.linkedin.com/in/phamktp/</a></li>
-			<li>Github: <a href="https://github.com/kpthanh01" target="_blank">github.com/kpthanh01</a></li>
+		<ul class="contact-info">
+			<li><a href="mailto:kpthanh01@gmial.com">Email</a></li>
+			<li><a href="https://www.linkedin.com/in/phamktp/" target="_blank">LinkedIn</a></li>
+			<li><a href="https://github.com/kpthanh01" target="_blank">Github</a></li>
 		</ul>
-		<div id="copyright">Copyright &copy; 2018, Kevin Thanh Pham</div> -->
+		<div class="copyright">Copyright &copy; 2018, Kevin Thanh Pham</div>
 	</footer>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="client.js"></script>

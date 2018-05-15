@@ -72,8 +72,7 @@ describe('MyRecipe API resources', function(){
 		return closeServer();
 	});
 
-	describe('GET Recipe endpoint', function(){
-		it('should return all existing recipes of a user', function(){
+		it('should use GET Recipe endpoint and return all existing recipes of a user', function(){
 			let res;
 			return chai.request(app)
 				.get(`/recipe/user/${testUsername}`)
@@ -88,10 +87,8 @@ describe('MyRecipe API resources', function(){
 					expect(res.body.length).to.equal(count);
 				});
 		});
-	});
 
-	describe('POST Recipe endpoint', function(){
-		it('should post/create a new recipe', function(){
+		it('should use POST Recipe endpoint and post/create a new recipe', function(){
 			const newPost = generateRecipeData();
 			
 			return chai.request(app)
@@ -108,12 +105,10 @@ describe('MyRecipe API resources', function(){
 						expect(res.body.description).to.equal(newPost.description);
 						expect(res.body.ingredients).to.equal(newPost.ingredients);
 						expect(res.body.directions).to.equal(newPost.directions);
-					})
+					});
 		});
-	});
 
-	describe('PUT Recipe endpoint', function(){
-		it('should update fields of a recipe', function(){
+		it('should use PUT Recipe endpoint and update fields of a recipe', function(){
 			const updateRecipe = {
 				description: 'New Description',
 				ingredients: 'New Ingredients',
@@ -138,10 +133,8 @@ describe('MyRecipe API resources', function(){
 						expect(recipe.directions).to.equal(updateRecipe.directions);
 					});
 		});
-	});
 
-	describe('DELETE Recipe endpoint', function(){
-		it('should delete a recipe by id', function(){
+		it('should use DELETE Recipe endpoint and delete a recipe by id', function(){
 			let deleteRecipe
 			return Recipe
 				.findOne()
@@ -158,5 +151,4 @@ describe('MyRecipe API resources', function(){
 					expect(res).to.be.null;
 				});
 		});
-	});
 });

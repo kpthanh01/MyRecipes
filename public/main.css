@@ -107,6 +107,13 @@ header p{
 	margin-top: 12px;
 	padding: 10px 40px 10px;
 	font-size: 15px;
+	color: white;
+	background-color: #22b1bf;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.login-regitster-form button:hover{
+	color: #f6ce70;
 }
 .login-register-form > p{
 	font-size: 18px;
@@ -223,6 +230,24 @@ header p{
 .hideNavLink{
 	display: none;
 }
+
+/*------------------------------------------------*/
+/*footer*/
+
+.copyright{
+	text-align: center;
+}
+.contact-info{
+	text-align: center;
+	list-style-type: none;
+	text-decoration: none;
+}
+.contact-info li{
+	display: inline-block;
+	margin-right: 10px;
+}
+
+
 
 @media screen and (max-width: 460px){
 	.nav{

@@ -12,6 +12,8 @@ $(document).ready(function(){
 $('.login-trigger').click(function(event){
 	event.preventDefault();
 	$('section').hide();
+	$('.alert').html('');
+	$('.form-input-account').val('');
 	$('#login-btn').addClass('hideNavLink');
 	$('#register-btn').addClass('hideNavLink');
 	$('#login-page').show();
@@ -22,6 +24,7 @@ $('.register-trigger').click(function(event){
 	event.preventDefault();
 	$('section').hide();
 	$('.alert').html('');
+	$('.form-input-account').val('');
 	$('#login-btn').addClass('hideNavLink');
 	$('#register-btn').addClass('hideNavLink');
 	$('#register-page').show();
@@ -56,7 +59,7 @@ $('#login-form').submit(function(event){
 	const password = $('#loginPassword').val();
 
 	if(username === '' || password === ''){
-		alert("Please enter both Username and Password");
+		$('.alert').html("Please enter both Username and Password");
 	} else {
 		const loginUserObject = {
 			username: username,
@@ -72,6 +75,7 @@ $('#login-form').submit(function(event){
 		.done(function(result){
 			console.log(result);
 			$('section').hide();
+			$('.alert').html("");
 			$('#create-btn').removeClass('hideNavLink');
 			$('#logout-btn').removeClass('hideNavLink');
 			$('#list-page').show();
@@ -82,7 +86,7 @@ $('#login-form').submit(function(event){
 			console.log(jqXHR);
 			console.log(error);
 			console.log(errorThrown);
-			alert('Please check Username and Password');
+			$('.alert').html('Please check Username and Password');
 		});
 	}
 });
@@ -97,7 +101,7 @@ $('#register-form').submit(function(event){
 	const confirmPass = $('#confirmPassword').val();
 
 	if(password != confirmPass){
-		alert('Please make sure both password are the same');
+		$('.alert').html('Please make sure both password are the same');
 	} else {
 		const newUserObject = {
 			username: username,
