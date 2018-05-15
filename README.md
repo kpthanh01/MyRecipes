@@ -6,7 +6,8 @@ https://my-recipes-node-capstone.herokuapp.com/
 Thinkful Second Capstone Project, My-Recipes-Node-Capstone, is an interactive full stack web application that helps users record and store thier recipes.
 
 ## Screenshots
-![Homepage](https://github.com/kpthanh01/my-recipes-node-capstone/master/public/images/homepage.jpg)
+![Homepage](https://github.com/kpthanh01/my-recipes-node-capstone/tree/master/public/images/homepage.png)
+![](https://github.com/kpthanh01/my-recipes-node-capstone/tree/master/public/images/)
 
 ## Use Cases
 
