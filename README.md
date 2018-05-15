@@ -7,7 +7,9 @@ Thinkful Second Capstone Project, My-Recipes-Node-Capstone, is an interactive fu
 
 ## Screenshots
 ![Homepage](https://github.com/kpthanh01/my-recipes-node-capstone/tree/master/public/images/homepage.png)
-![](https://github.com/kpthanh01/my-recipes-node-capstone/tree/master/public/images/)
+![Login](https://github.com/kpthanh01/my-recipes-node-capstone/blob/master/public/images/login.png)
+![List](https://github.com/kpthanh01/my-recipes-node-capstone/blob/master/public/images/list.png)
+![Create](https://github.com/kpthanh01/my-recipes-node-capstone/blob/master/public/images/create.png)
 
 ## Use Cases
 
